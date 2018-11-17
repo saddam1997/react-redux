@@ -28,6 +28,7 @@ class DashboardPage extends React.Component {
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h1>Hi {this.state.user.mobile}!</h1>
+                <h1>Hi {this.state.user.mobile}!</h1>
                 <p>Dashboard</p>
                 <h3>Good things take time!!!!!!!!!!</h3>
 
@@ -42,6 +43,7 @@ class DashboardPage extends React.Component {
 function mapStateToProps(state) {
     const { users, authentication } = state;
     const { user } = authentication;
+
     return {
         user,
         users

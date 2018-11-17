@@ -29,7 +29,7 @@ async function login(username, password) {
     return await fetch(`http://localhost:3002/api/v1/login`, requestOptions)
         .then(handleResponse)
         .then(async user => {
-            console.log(user);
+            //console.log(user);
 
             // login successful if there's a jwt token in the response
             if (user.token) {
@@ -37,7 +37,7 @@ async function login(username, password) {
                 localStorage.setItem('user', JSON.stringify(user.data));
             }
 
-            return user;
+            return user.data;
         });
 }
 
