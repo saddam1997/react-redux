@@ -13,18 +13,12 @@ class DashboardPage extends React.Component {
 
     }
     componentDidMount() {
-        console.log("--->>>", this.props.user);
         this.setState({ user: this.props.user })
-
     }
-
     handleDeleteUser(id) {
         return (e) => this.props.dispatch(userActions.delete(id));
     }
-
     render() {
-        // console.log("--->>>", this.props.user);
-        //const { user, users } = this.props;
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h1>Hi {this.state.user.mobile}!</h1>
