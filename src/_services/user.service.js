@@ -12,19 +12,29 @@ export const userService = {
 };
 
 function login(username, password) {
+    let userdetails = {
+        "mobile": username,
+        "password": password,
+        "device_type": "asdfasdf",
+        "device_id": "asdfasdf",
+        "device_token": "asdfasdf",
+        "fscp": "AIzaSyBvfEwq29aFHMM2hy3R-4fiZRbrlwV5c2o"
+    }
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify(userdetails)
     };
 
-    return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
+    return fetch(`http://localhost:3002/api/v1/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
+            console.log(user);
+
             // login successful if there's a jwt token in the response
             if (user.token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('user', JSON.stringify(user.data));
             }
 
             return user;
