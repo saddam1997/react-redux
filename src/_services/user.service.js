@@ -14,11 +14,7 @@ export const userService = {
 async function login(username, password) {
     let userdetails = {
         "mobile": username,
-        "password": password,
-        "device_type": "asdfasdf",
-        "device_id": "asdfasdf",
-        "device_token": "asdfasdf",
-        "fscp": "AIzaSyBvfEwq29aFHMM2hy3R-4fiZRbrlwV5c2o"
+        "password": password
     }
     const requestOptions = {
         method: 'POST',
