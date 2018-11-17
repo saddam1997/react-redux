@@ -11,10 +11,14 @@ export const userService = {
     delete: _delete
 };
 
-function login(username, password) {
+async function login(username, password) {
     let userdetails = {
         "mobile": username,
-        "password": password
+        "password": password,
+        "device_type": "asdfasdf",
+        "device_id": "asdfasdf",
+        "device_token": "asdfasdf",
+        "fscp": "AIzaSyBvfEwq29aFHMM2hy3R-4fiZRbrlwV5c2o"
     }
     const requestOptions = {
         method: 'POST',
@@ -22,9 +26,9 @@ function login(username, password) {
         body: JSON.stringify(userdetails)
     };
 
-    return fetch(`http://localhost:3002/api/v1/login`, requestOptions)
+    return await fetch(`http://localhost:3002/api/v1/login`, requestOptions)
         .then(handleResponse)
-        .then(user => {
+        .then(async user => {
             console.log(user);
 
             // login successful if there's a jwt token in the response
@@ -90,7 +94,7 @@ function _delete(id) {
     return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
 }
 
-function handleResponse(response) {
+async function handleResponse(response) {
     return response.text().then(text => {
         const data = text && JSON.parse(text);
         if (!response.ok) {

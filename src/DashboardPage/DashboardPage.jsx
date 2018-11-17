@@ -5,8 +5,17 @@ import { connect } from 'react-redux';
 import { userActions } from '../_actions';
 
 class DashboardPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: {},
+        };
+
+    }
     componentDidMount() {
-        this.props.dispatch(userActions.getAll());
+        console.log("--->>>", this.props.user);
+        this.setState({ user: this.props.user })
+
     }
 
     handleDeleteUser(id) {
@@ -14,10 +23,11 @@ class DashboardPage extends React.Component {
     }
 
     render() {
-        const { user, users } = this.props;
+        // console.log("--->>>", this.props.user);
+        //const { user, users } = this.props;
         return (
             <div className="col-md-6 col-md-offset-3">
-                <h1>Hi {user.mobile}!</h1>
+                <h1>Hi {this.state.user.mobile}!</h1>
                 <p>Dashboard</p>
                 <h3>Good things take time!!!!!!!!!!</h3>
 
